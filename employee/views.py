@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -16,7 +15,8 @@ def show_employees(request):
     if request.is_ajax():
         text = request.GET['children_id']
         node = Employee.objects.get(id=text)
-        employees = node.get_descendants(include_self = "True").filter(level__lte=node.level + 3)
+        # Меняем глубину просмотра дерева.
+        employees = node.get_descendants(include_self="True").filter(level__lte=node.level + 9999)
         data = {}
         data['employees'] = employees
         response = render(request, 'employees_list.html', {'employees': employees})

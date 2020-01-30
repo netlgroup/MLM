@@ -125,7 +125,7 @@ p { line-height: 1.5em; }
 </head>
 <body>
 
-{% load staticfiles %}
+{% load static %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="{% static 'js/jquery.nestable.js' %}"></script>
 
@@ -186,7 +186,7 @@ p { line-height: 1.5em; }
     <ol class="root dd-list">
       {% recursetree employees %}
         <li class="dd-item" id="{{ node.id }}">
-          <div class="dd-handle" id="div{{ node.id }}">{{ node.name }}, Position - {{ node.employment_position }}, Salary - {{ node.salary }}</div>
+          <div class="dd-handle" id="div{{ node.id }}">{{ node.name }}, Level - {{ node.employment_position }}, Purchases - {{ node.salary }}</div>
           {% if not node.is_leaf_node %}
             <ol class="children">
                 {{ children }}
